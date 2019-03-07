@@ -1,26 +1,28 @@
 /**
  * 项目名:sc_02_netflix_eureka
- * 包名：com.luchagnqing.eurekaclient1
- * 文件名：IndexController.java
+ * 包名：com.luchangqing.feign1
+ * 文件名：ApiController.java
  * 用途：(这里用一句话描述这个方法的作用)
  * 版本信息：1.0
  * 作者：luzq58
- * 日期：2019-3-6 18:57:57
+ * 日期：2019-3-7 16:20:20
  * Copyright (c) 2019 东方希望集团-版权所有.
  */
-package com.luchagnqing.eurekaclient1;
+package com.luchangqing.feign1;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class IndexController {
-	@Value("${server.port}")
-	private String serverport;
+public class ApiController {
+
+	@Autowired
+	private ApiService apiService;
 
 	@RequestMapping("index")
 	public String index(){
-		return "luchangqing:"+serverport;
+		return apiService.index();
 	}
 }
+
